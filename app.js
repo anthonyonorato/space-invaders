@@ -81,8 +81,31 @@ function moveInvaders() {
         resultsDisplay.innerHTML = 'GAME OVER'
         clearInterval(invadersId)
     }
+    
+    for (let i = 0; i < alienInvaders.length; i++) {
+        if(alienInvaders[i] > (squares.length + width)) {
+            
+            resultsDisplay.innerHTML = 'GAME OVER'
+            clearInterval(invadersId) 
+        }
+    }
+}
+invadersId = setInterval(moveInvaders, 50)
 
+function shoot(e) {
+    let laserId
+    let currentLaserIndex = currentShooterIndex
+    function moveLaser() {
+        squares[currentLaserIndex].classList.remove('laser')
+        currentLaserIndex -= width
+        squares[currentLaserIndex].classList.add('laser')
 
+    }
+
+        switch(e.key) {
+            case 'ArrowUp':
+                laserId = setInterval(moveLaser, 100)
+        }
 }
 
-invadersId = setInterval(moveInvaders, 100)
+document.addEventListener('keydown', shoot)
