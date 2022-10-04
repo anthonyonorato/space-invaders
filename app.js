@@ -109,3 +109,5 @@ function shoot(e) {
 }
 
 document.addEventListener('keydown', shoot)
+
+// 4:38:50 in video - left off
